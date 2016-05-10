@@ -2,35 +2,19 @@
 
 function Plane() {
 };
+
 Plane.prototype.land = function(airport) {
-  // airport.isFull();
   this.isLanded = true;
   this.airport = airport;
+  airport.dock(this);
 };
 
 Plane.prototype.takeOff = function() {
-  this.isLanded = false;
-  this.airport = 'none';
+  if (this.airport.isStormy()) {
+    throw new Error('cannot takeoff during storm');
+  }
+  else {
+    this.isLanded = false;
+    this.airport = 'none';
+  }
 };
-
-
-
-
-//
-//
-//
-// Player.prototype.pause = function() {
-//   this.isPlaying = false;
-// };
-//
-// Player.prototype.resume = function() {
-//   if (this.isPlaying) {
-//     throw new Error("song is already playing");
-//   }
-//
-//   this.isPlaying = true;
-// };
-//
-// Player.prototype.makeFavorite = function() {
-//   this.currentlyPlayingSong.persistFavoriteStatus(true);
-// };

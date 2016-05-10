@@ -20,3 +20,8 @@ Airport.prototype.isFull = function() {
 Airport.prototype.landedPlanes = function() {
   return this._hangar;
 };
+
+Airport.prototype.isStormy = function() {
+  var rand = Math.floor((Math.random() * 10) + 1);
+  return rand > 8 ? false : true;
+};
