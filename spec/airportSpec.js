@@ -1,6 +1,3 @@
-// As an air traffic controller
-// To ensure safety
-// I want to prevent landing when the airport is full
 'use strict';
 
 describe("Airport", function() {
@@ -9,12 +6,12 @@ describe("Airport", function() {
 
   beforeEach(function() {
     airport = new Airport();
-    plane = new Plane();
+    plane = jasmine.createSpy('plane')
   });
 
   it('Can hold a plane', function() {
     airport.dock(plane);
-    expect(airport.landedPlanes).toContain(plane);
+    expect(airport.landedPlanes()).toContain(plane);
   });
 
   it('Report when full', function() {
