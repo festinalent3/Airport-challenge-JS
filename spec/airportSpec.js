@@ -1,3 +1,28 @@
 // As an air traffic controller
-// So I can get passengers to a destination
-// I want to instruct a plane to land at an airport and confirm that it has landed 
+// To ensure safety
+// I want to prevent landing when the airport is full
+'use strict';
+
+describe("Airport", function() {
+  var airport;
+  var plane;
+
+  beforeEach(function() {
+    airport = new Airport();
+    plane = new Plane();
+  });
+
+  it('Can hold a plane', function() {
+    airport.dock(plane);
+    expect(airport.landedPlanes).toContain(plane);
+  });
+
+  it('Report when full', function() {
+    for (var i = 1; i <= airport.MAX_CAPACITY; i++) {
+      airport.dock(plane);
+    }
+    expect(function() {
+      airport.dock(plane);
+    }).toThrowError("nope, full!");
+  });
+});

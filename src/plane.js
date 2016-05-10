@@ -1,8 +1,16 @@
+'use strict';
+
 function Plane() {
-}
+};
 Plane.prototype.land = function(airport) {
+  // airport.isFull();
   this.isLanded = true;
   this.airport = airport;
+};
+
+Plane.prototype.takeOff = function() {
+  this.isLanded = false;
+  this.airport = 'none';
 };
 
 

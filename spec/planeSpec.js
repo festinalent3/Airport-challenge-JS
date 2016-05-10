@@ -2,6 +2,12 @@
 // So I can get passengers to a destination
 // I want to instruct a plane to land at an airport and confirm that it has landed
 
+//
+// As an air traffic controller
+// So I can get passengers on the way to their destination
+// I want to instruct a plane to take off from an airport and confirm that it is no longer in the airport
+'use strict';
+
 describe("Plane", function() {
   var plane;
   var airport;
@@ -12,10 +18,16 @@ describe("Plane", function() {
   });
 
   it("should be able to land at an airport", function() {
-        plane.land(airport);
-        expect(plane.isLanded).toEqual(true);
-        expect(plane.airport).toEqual(airport);
+    plane.land(airport);
+    expect(plane.isLanded).toEqual(true);
+    expect(plane.airport).toEqual(airport);
 
+  });
+
+  it("should be able to take off from an airport", function() {
+    plane.takeOff();
+    expect(plane.isLanded).toEqual(false);
+    expect(plane.airport).toEqual('none');
   });
 
 });
